@@ -7,7 +7,6 @@ const { ContextMenuBuilder } = require("discord.js-util");
 const { v4 } = require("uuid");
 
 module.exports = {
-    devOnly: true, //This toggles if it should be in your test server
     data: new jsh.commandBuilder()
     .setName("points")
     .setDescription("Check you or someone else's points.")
