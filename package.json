@@ -1,0 +1,28 @@
+{
+  "name": "easter-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Turtlepaw/easter-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Turtlepaw/easter-bot/issues"
+  },
+  "homepage": "https://github.com/Turtlepaw/easter-bot#readme",
+  "dependencies": {
+    "@keyvhq/core": "^1.6.9",
+    "discord.js": "^13.6.0",
+    "discordjsh": "^3.2.0",
+    "keyv": "^4.2.2",
+    "keyv-file": "^0.2.0",
+    "uuid": "^8.3.2"
+  }
+}
