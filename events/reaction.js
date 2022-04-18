@@ -17,27 +17,29 @@ module.exports = {
         const baseCheck = (await reaction.users.fetch()).has(user.id);
         const old = await client.userKV.get(`${user.id}/${reaction.message.guild.id}`);
         
-        if(guild?.done) return user.send({
-            content: "`🏆` Someone already won the game!"
-        });
-
-        if(guild.win_eggs != null && guild.win_eggs == (old?.points+1)){
-            user.send({
-                content: `\`🏆\` Congrats! You won by getting all the eggs (\`${guild.win_eggs}\`)`
+        if(guild != null){
+            if(guild?.done) return user.send({
+                content: "`🏆` Someone already won the game!"
             });
-            if(guild.win_channel != null){
-                const chan = await reaction.message.guild.channels.fetch(guild.win_channel.id);
-
-                chan.send({
-                    content: `\`🏆\` Congrats! ${user} has won the game by collecting all the eggs! (\`${guild.win_eggs}\`)`
+    
+            if(guild?.win_eggs != null && guild.win_eggs == (old?.points+1)){
+                user.send({
+                    content: `\`🏆\` Congrats! You won by getting all the eggs (\`${guild.win_eggs}\`)`
                 });
+                if(guild.win_channel != null){
+                    const chan = await reaction.message.guild.channels.fetch(guild.win_channel.id);
+    
+                    chan.send({
+                        content: `\`🏆\` Congrats! ${user} has won the game by collecting all the eggs! (\`${guild.win_eggs}\`)`
+                    });
+                }
+                if(guild.role != null){
+                    const role = await reaction.message.guild.roles.fetch(guild.role.id);
+                    const member = await reaction.message.guild.members.fetch(user);
+                    member.roles.add(role);
+                }
+                return;
             }
-            if(guild.role != null){
-                const role = await reaction.message.guild.roles.fetch(guild.role.id);
-                const member = await reaction.message.guild.members.fetch(user);
-                member.roles.add(role);
-            }
-            return;
         }
 
         if(old != null && old?.catches.includes(reaction.message.id)){
