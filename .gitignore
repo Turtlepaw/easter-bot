@@ -108,3 +108,4 @@ config.json
 
 # DB
 data/temp.json
+data/users.json
