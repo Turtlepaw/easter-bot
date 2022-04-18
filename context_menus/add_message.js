@@ -15,6 +15,7 @@ module.exports = {
      * @param {Client} client
      */
     async execute(interaction, client){
+        console.log(interaction.member.permissions.has("ADMINISTRATOR"))
         if(!interaction.member.permissions.has("ADMINISTRATOR")) return errorMessage("`❌` Invalid permissions", interaction);
         const message = interaction.options.getMessage("message");
 
