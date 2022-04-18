@@ -15,7 +15,7 @@ module.exports = {
      * @param {Client} client
      */
     async execute(interaction, client){
-        if(!interaction.memberPermissions.has("ADMINISTRATOR")) return errorMessage("`❌` Invalid permissions", interaction);
+        if(!interaction.member.permissions.has("ADMINISTRATOR")) return errorMessage("`❌` Invalid permissions", interaction);
         const message = interaction.options.getMessage("message");
 
         await client.kv.set(message.id, {
