@@ -22,7 +22,7 @@ module.exports = {
                 content: "`🏆` Someone already won the game!"
             });
     
-            if(guild?.win_eggs != null && guild.win_eggs == (old?.points+1)){
+            if(guild?.win_eggs != null && guild.win_eggs == (old?.points+1) && reaction.emoji.name == "🥚"){
                 user.send({
                     content: `\`🏆\` Congrats! You won by getting all the eggs (\`${guild.win_eggs}\`)`
                 });
@@ -38,7 +38,6 @@ module.exports = {
                     const member = await reaction.message.guild.members.fetch(user);
                     member.roles.add(role);
                 }
-                return;
             }
         }
 
