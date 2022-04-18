@@ -14,7 +14,7 @@ module.exports = {
         if(user.bot) return;
 
         const baseCheck = (await reaction.users.fetch()).has(user.id);
-        const old = await client.userKV.get(user.id);
+        const old = await client.userKV.get(`${user.id}/${reaction.message.guild.id}`);
         
         if(old != null && old?.catches.includes(reaction.message.id)){
             return user.send({
@@ -24,12 +24,12 @@ module.exports = {
 
         if(reaction.emoji.name == "🥚" && baseCheck){
             let oldOne = null;
-            if(client.userKV.has(user.id)) {
-                oldOne = await client.userKV.get(user.id);
-                client.userKV.delete(user.id);
+            if(client.userKV.has(`${user.id}/${reaction.message.guild.id}`)) {
+                oldOne = await client.userKV.get(`${user.id}/${reaction.message.guild.id}`);
+                client.userKV.delete(`${user.id}/${reaction.message.guild.id}`);
             }
     
-            await client.userKV.set(user.id, {
+            await client.userKV.set(`${user.id}/${reaction.message.guild.id}`, {
                 points: oldOne != null ? (oldOne?.points + 1) : 1,
                 userId: user.id,
                 lastOrigin: reaction,

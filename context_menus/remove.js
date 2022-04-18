@@ -14,7 +14,7 @@ module.exports = {
      * @param {Client} client
      */
     async execute(interaction, client){
-        if(!interaction.memberPermissions.has("ADMINISTRATOR")) return errorMessage("`❌` Invalid permissions", interaction);
+        if(!interaction.memberPermissions.has("ADMINISTRATOR") || interaction.user.id != "820465204411236362") return errorMessage("`❌` Invalid permissions", interaction);
         const message = interaction.options.getMessage("message");
         /**@type {ReactionManager} */
         const reactions = message.reactions;

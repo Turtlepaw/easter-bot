@@ -24,12 +24,12 @@ module.exports = {
 
         const allMembers = interaction.guild.members.cache;
         const items = Array.from(allMembers.values()).sort(function(user) {
-            return client.kv.get(user.id).points;
+            return client.kv.get(`${user.id}/${interaction.guild.id}`).points;
         });
 
         let count = 1;
         for (const member of items){
-            const find = await client.userKV.get(member.id);
+            const find = await client.userKV.get(`${member.id}/${interaction.guild.id}`);
             if(!find) continue;
             ebd.addField(`#${count}`, `${member} (${find.points} 🥚)`)
             count++

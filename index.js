@@ -49,6 +49,14 @@ client.userKV = new keyv({
         decode: JSON.parse // deserialize function
     })
 });
+client.configKV = new keyv({
+    store: new KeyvFile({
+        filename: `./data/conf.json`, // the file path to store the data
+        writeDelay: 100, // ms, batch write to disk in a specific duration, enhance write performance.
+        encode: JSON.stringify, // serialize function
+        decode: JSON.parse // deserialize function
+    })
+});
 
 //This is when the bot is ready. The bot is *fully* ready after 4s after this
 client.on("ready", async () => {

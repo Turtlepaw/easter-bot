@@ -18,7 +18,7 @@ module.exports = {
      */
     async execute(interaction, client){
         const user = interaction.options.getUser("user") || interaction.user;
-        const find = await client.userKV.get(user.id);
+        const find = await client.userKV.get(`${user.id}/${interaction.guild.id}`);
 
         if(!find) return errorMessage("`❌` This user does not have any points!", interaction);
 
