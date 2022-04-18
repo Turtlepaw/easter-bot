@@ -44,7 +44,8 @@ module.exports = {
         client.configKV.set(interaction.guild.id, {
             role: interaction.options.getRole("role") || oldConf?.role || null,
             win_eggs: interaction.options.getInteger("win_eggs") || oldConf?.win_eggs || null,
-            win_channel: interaction.options.getChannel("win_channel") || oldConf?.win_channel || null
+            win_channel: interaction.options.getChannel("win_channel") || oldConf?.win_channel || null,
+            done: false
         });
 
         await interaction.reply({
