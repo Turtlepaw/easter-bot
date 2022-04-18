@@ -17,7 +17,7 @@ module.exports = {
         const baseCheck = (await reaction.users.fetch()).has(user.id);
         const old = await client.userKV.get(`${user.id}/${reaction.message.guild.id}`);
         
-        if(guild.done) return user.send({
+        if(guild?.done) return user.send({
             content: "`🏆` Someone already won the game!"
         });
 
